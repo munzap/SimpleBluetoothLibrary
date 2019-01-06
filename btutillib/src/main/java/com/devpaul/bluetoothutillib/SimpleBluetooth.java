@@ -199,6 +199,8 @@ public class SimpleBluetooth {
         //check the handler.
         if(customHandler == null) throw
                 new NullPointerException("Custom BluetoothHandler cannot be null!");
+
+        this.mListener = customHandler.mListener; // PM: If no listener is set then connected and disconnected messages are delivered. The messages are now availble in handler
         this.bluetoothUtility = new BluetoothUtility(mContext, customHandler);
         //register the state change receiver.
         this.bluetoothStateReceiver = BluetoothStateReceiver
